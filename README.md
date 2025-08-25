@@ -17,6 +17,15 @@ This repository is a **GitHub mirror**. The code is **maintained** in our **priv
 
 ---
 
+## Prerequisites
+
+- **Java 17+**
+- **Micronaut 4.x**
+- **Reactive libraries** (Project Reactor)
+- **RabbitMQ**: Required for multi-step process orchestration and notifications.
+
+---
+
 ## Features
 
 ### 1. Multi-Step Process Orchestration
@@ -44,6 +53,12 @@ This repository is a **GitHub mirror**. The code is **maintained** in our **priv
 ### 5. Configurable via YAML
 
 ```yaml
+rabbitmq:
+  addresses:
+    - xxxxxxx:xxxx
+  username: xxxx
+  password: xxxx
+
 lda:
   steps:
     enabled: true
@@ -63,17 +78,19 @@ lda:
           │ REST/gRPC    │
           └───────┬──────┘
                   │
-         Start Process / Subscribe Updates
+         Ask Process / Subscribe Updates
                   │
                   ▼
       ┌─────────────────────┐
       │ Orchestrator Server │
+      │     Start MSP       │
       │ (libs-async-coms)   │
       └───────┬─────────────┘
               │
               │ MQ / gRPC / REST
               ▼
       ┌─────────────────────┐
+      │   (service server)  │
       │ Worker Nodes        │
       │ Execute Steps       │
       └───────┬─────────────┘
@@ -94,11 +111,13 @@ lda:
 
 **Maven**
 
+need to build localy the library (not public accessible)
+
 ```xml
 <dependency>
     <groupId>lda.services.libs</groupId>
     <artifactId>libs-async-coms</artifactId>
-    <version>1.0.0</version>
+    <version>0.1.6</version>
 </dependency>
 ```
 
@@ -205,6 +224,7 @@ Example event:
 ## Notes
 
 > This GitHub repository is **read-only**. Main development is on our private GitLab repository.
+> This library requires a running **RabbitMQ** instance to manage asynchronous steps and notifications.
 
 ---
 
