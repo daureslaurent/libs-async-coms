@@ -1,0 +1,31 @@
+include:
+  - project: 'intra-services/infra-services'
+    ref: main
+    file:
+      - '/ci-gitlab/infra.gitlab-ci.yml'
+      - '/ci-gitlab/spring.gitlab-ci.yml'
+
+stages:
+  - build-mvn
+  - test-mvn
+  - build-docker
+  - deploy
+  - build-docker-graalvm
+  - deploy-graalvm
+
+variables:
+  VERSION_LOGIC: '(if [ "$${CI_COMMIT_TAG}" == "" ]; then echo "dev-$$CI_COMMIT_BRANCH"| sed "s/\//_/"; else echo "$${CI_COMMIT_TAG}"; fi);'
+  COMPOSE_NAME: 'libs-async-coms'
+
+#======================
+#=    BUILD MAVEN     =
+#======================
+build_maven:
+  stage: build-mvn
+  extends: .deploy_maven
+
+sonar_maven:
+  stage: test-mvn
+  when: manual
+  extends: .sonar_maven
+  needs: [build_maven]

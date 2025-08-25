@@ -1,0 +1,6 @@
+lda:
+  msp:
+    enabled: true
+  notification:
+    enabled: true
+    socket: true
