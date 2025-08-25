@@ -39,11 +39,6 @@
             <artifactId>micronaut-inject</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.micronaut</groupId>-->
-<!--            <artifactId>micronaut-validation</artifactId>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.micronaut.rabbitmq</groupId>
             <artifactId>micronaut-rabbitmq</artifactId>
@@ -55,17 +50,6 @@
             <artifactId>micronaut-websocket</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>io.micronaut</groupId>-->
-        <!--            <artifactId>micronaut-runtime</artifactId>-->
-        <!--            <scope>provided</scope>-->
-        <!--&lt;!&ndash;            <exclusions>&ndash;&gt;-->
-        <!--&lt;!&ndash;                <exclusion>&ndash;&gt;-->
-        <!--&lt;!&ndash;                    <groupId>io.micronaut</groupId>&ndash;&gt;-->
-        <!--&lt;!&ndash;                    <artifactId>micronaut-jackson-databind</artifactId>&ndash;&gt;-->
-        <!--&lt;!&ndash;                </exclusion>&ndash;&gt;-->
-        <!--&lt;!&ndash;            </exclusions>&ndash;&gt;-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-jackson-databind</artifactId>
@@ -111,7 +95,6 @@
             <plugin>
                 <groupId>io.micronaut.build</groupId>
                 <artifactId>micronaut-maven-plugin</artifactId>
-<!--                <version>3.5.4</version>-->
                 <configuration>
                     <shared>true</shared>
                 </configuration>
@@ -149,11 +132,6 @@
                             <artifactId>micronaut-http-validation</artifactId>
                             <version>${micronaut.core.version}</version>
                         </path>
-<!--                        <path>-->
-<!--                            <groupId>io.micronaut</groupId>-->
-<!--                            <artifactId>micronaut-validation</artifactId>-->
-<!--                            <version>${micronaut.version}</version>-->
-<!--                        </path>-->
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
